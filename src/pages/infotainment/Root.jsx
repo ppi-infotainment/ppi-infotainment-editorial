@@ -13,7 +13,7 @@ function Root() {
 
   return (
     <>
-        <InfotainmentContent filetype="video/vnd.youtube.yt" content={mockData.yt} />
+        <InfotainmentContent filetype="application/vnd.infotainment.externalvideo" content={mockData.yt} />
         <InfotainmentQRCode id={id} />
     </>
   )
