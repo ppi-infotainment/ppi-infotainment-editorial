@@ -3,11 +3,11 @@ import { Box } from "@mui/system";
 import { FunctionComponent } from "react";
 import styles from './DeviceCard.module.css';
 
-export type DeviceCard = {
+export type DeviceCardProps = {
     deviceName: string;
 };
 
-const DeviceCard: FunctionComponent<DeviceCard> = ({ deviceName }) => {
+const DeviceCard: FunctionComponent<DeviceCardProps> = ({ deviceName }) => {
 
     return (
         <Box className={styles.device_card}>
