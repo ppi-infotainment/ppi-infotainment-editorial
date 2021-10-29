@@ -43,4 +43,3 @@ const EditDeviceContentPage: FunctionComponent = () => {
 };
 
 export default EditDeviceContentPage;
-
