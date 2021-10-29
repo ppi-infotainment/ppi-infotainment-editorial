@@ -4,6 +4,7 @@ import ManageContentsPage from './pages/manage_contents/ManageContentsPage';
 import ManageDevicesPage from './pages/manage_devices/ManageDevicesPage';
 import HomePage from './pages/homepage/Homepage';
 import InfotainmentRoot from './pages/infotainment/Root';
+import EditDeviceContentPage from './pages/edit_device_content/EditDeviceContentPage';
 
 function App() {
   return (
@@ -12,7 +13,10 @@ function App() {
         <Route path="/infotainment/:id">
           <InfotainmentRoot />
         </Route>
-        <Route path="/devices">
+        <Route path="/devices/:id">
+          <EditDeviceContentPage />
+        </Route>
+        <Route exact path="/devices">
           <ManageDevicesPage />
         </Route>
         <Route path="/contents">

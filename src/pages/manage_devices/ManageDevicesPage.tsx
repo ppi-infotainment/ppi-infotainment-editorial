@@ -19,7 +19,7 @@ const ManageDevices: FunctionComponent = () => {
         {
             id: "3",
             description: "Düsseldorf Küche"
-    }];
+        }];
 
     return (
         <Box className={styles.manage_devices_page}>
@@ -27,7 +27,12 @@ const ManageDevices: FunctionComponent = () => {
                 <PageHeaderText title="Geräte verwalten" />
             </Box>
             <Box sx={{ flexDirection: 'column', display: 'flex', alignContent: 'center', alignSelf: 'center' }}>
-                {mockedDevices.map((device) => <DeviceCard deviceName={device.description} key={device.id + "_" + device.description}/>)}
+                {mockedDevices.map((device) =>
+                    <DeviceCard
+                        deviceId={device.id}
+                        deviceName={device.description}
+                        key={device.id + "_" + device.description}
+                    />)}
             </Box>
         </Box>
     );
