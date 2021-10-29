@@ -1,0 +1,11 @@
+.infotainment_qrcode {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+
+    border-radius: 4px 0 0 0;
+}
+
+.infotainment_qrcode > svg {
+    margin: 16px;
+}

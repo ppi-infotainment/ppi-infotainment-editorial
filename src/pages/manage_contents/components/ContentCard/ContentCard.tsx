@@ -18,11 +18,15 @@ const ContentCard: FunctionComponent<ContentCardProps> = ({ contentElement }) =>
                     <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
                         {contentElement.name}
                     </Typography>
-                    <Typography sx={{ mb: 1.5, fontWeight: 'bold' }} color="text.secondary">
+                    <Typography sx={{ mb: 0.5, fontWeight: 'bold' }} color="text.secondary">
                         {contentElement.type}
                     </Typography>
+                    <Typography sx={{ fontSize: 12 }} color="text.secondary">
+                        Content-Typ
+                    </Typography>
                 </CardContent>
-                <CardActions>
+                <CardActions sx={{display: "flex", flexDirection: 'row-reverse'}}>
+                    
                     <Button size="small">Löschen</Button>
                 </CardActions>
             </Card>
