@@ -1,3 +1,4 @@
 .edit_device_content_page {
-    
+    display: flex;
+    justify-content: center;
 }
