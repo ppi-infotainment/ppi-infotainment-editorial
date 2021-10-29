@@ -13,7 +13,7 @@ const DeviceCard: FunctionComponent<DeviceCardProps> = ({ deviceName, deviceId }
     const history = useHistory();
     
     const onDeviceContentEditClick = () => {
-        history.push('/devices/' + deviceId);
+        history.push('/devices/' + deviceId + "/" + deviceName);
     };
 
     return (
