@@ -1,13 +1,20 @@
 import { Button, Card, CardActions, CardContent, Typography } from "@mui/material";
 import { Box } from "@mui/system";
 import { FunctionComponent } from "react";
+import { useHistory } from "react-router-dom";
 import styles from './DeviceCard.module.css';
 
 export type DeviceCardProps = {
     deviceName: string;
+    deviceId: string;
 };
 
-const DeviceCard: FunctionComponent<DeviceCardProps> = ({ deviceName }) => {
+const DeviceCard: FunctionComponent<DeviceCardProps> = ({ deviceName, deviceId }) => {
+    const history = useHistory();
+    
+    const onDeviceContentEditClick = () => {
+        history.push('/devices/' + deviceId + "/" + deviceName);
+    };
 
     return (
         <Box className={styles.device_card}>
@@ -18,7 +25,11 @@ const DeviceCard: FunctionComponent<DeviceCardProps> = ({ deviceName }) => {
                     </Typography>
                 </CardContent>
                 <CardActions sx={{ display: "flex", flexDirection: 'row-reverse' }}>
-                    <Button variant="outlined" size="small">Content für dieses Gerät verwalten</Button>
+                    <Button 
+                        variant="outlined"
+                        size="small"
+                        onClick={onDeviceContentEditClick}
+                        >Content für dieses Gerät verwalten</Button>
                 </CardActions>
             </Card>
         </Box>);
