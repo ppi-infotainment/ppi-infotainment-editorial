@@ -13,7 +13,7 @@ export type ContentCardProps = {
 const ContentCard: FunctionComponent<ContentCardProps> = ({ contentElement }) => {
     return (
         <Box className={styles.content_card} sx={{ minWidth: 275 }}>
-            <Card sx={{ minWidth: 275 }} variant='outlined'>
+            <Card sx={{ minWidth: 400 }} variant='outlined'>
                 <CardContent>
                     <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
                         {contentElement.name}

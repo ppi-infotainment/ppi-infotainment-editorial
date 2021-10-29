@@ -30,8 +30,10 @@ const ManageContents: FunctionComponent = () => {
     };
 
     return (
-        <Box sx={{display: 'flex', flexDirection: 'column'}} className={styles.manage_contents_page}>
-            <PageHeaderText title="Content verwalten" />
+        <Box sx={{ display: 'flex', flexDirection: 'column' }} className={styles.manage_contents_page}>
+            <Box sx={{ flexDirection: 'column', display: 'flex', alignContent: 'center', alignSelf: 'center' }}>
+                <PageHeaderText title="Content verwalten" />
+            </Box>
             <Box sx={{ flexDirection: 'column', display: 'flex', alignContent: 'center', alignSelf: 'center' }}>
                 {mockedData.map((content) =>
                     <ContentCard
