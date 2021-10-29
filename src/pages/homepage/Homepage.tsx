@@ -3,6 +3,7 @@ import * as React from "react";
 import { FunctionComponent } from "react";
 import { useHistory } from "react-router";
 import InfotainmentButton from "../../components/InfotainmentButton/InfotainmentButton";
+import PageHeaderText from "../../components/PageHeaderText/PageHeaderText";
 import styles from './Homepage.module.css';
 
 const HomePage: FunctionComponent = () => {
@@ -18,7 +19,8 @@ const HomePage: FunctionComponent = () => {
 
     return (
         <div className={styles.homepage}>
-            <Box sx={{ display: 'flex' }}>
+            <Box sx={{ display: 'inline-flex', flexDirection: 'column' }}>
+                <PageHeaderText title="PPI Infotainment System" />
                 <InfotainmentButton text="Content verwalten" onClick={onManageContentClicked} />
                 <InfotainmentButton text="Devices vewalten" onClick={onManageDevicesClicked} />
             </Box>

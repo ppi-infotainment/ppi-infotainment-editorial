@@ -12,7 +12,7 @@ export type InfotainmentButtonProps = {
 const InfotainmentButton: FunctionComponent<InfotainmentButtonProps> = ({onClick, text}) => {
     return (
         <div className={styles.infotainment_button}>
-            <Button onClick={onClick}>{text}</Button>
+            <Button onClick={onClick} variant="outlined">{text}</Button>
         </div>);
 };
 
