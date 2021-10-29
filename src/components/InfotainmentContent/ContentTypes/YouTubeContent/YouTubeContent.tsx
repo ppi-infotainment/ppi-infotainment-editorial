@@ -1,3 +1,4 @@
+import styles from './YouTubeContent.module.css';
 import { FunctionComponent, useEffect, useState } from "react";
 import ReactPlayer from 'react-player';
 
@@ -19,6 +20,7 @@ const YouTubeContent: FunctionComponent<YouTubeContentProps> = ({ content }) => 
         url={videoID}
         width='100%'
         height='100%'
+        className={styles.infotainment_youtube}
     />;
 };
 
