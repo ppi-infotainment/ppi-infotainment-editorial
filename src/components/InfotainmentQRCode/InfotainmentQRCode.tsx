@@ -5,10 +5,11 @@ import styles from './InfotainmentQRCode.module.css';
 
 export type InfotainmentQRCodeProps = {
     authority: string | undefined;
+    id: string;
 };
 
-const InfotainmentQRCode: FunctionComponent<InfotainmentQRCodeProps> = ({ authority }) => {
-    const path = "/";
+const InfotainmentQRCode: FunctionComponent<InfotainmentQRCodeProps> = ({ authority, id }) => {
+    const path = `/infotainment/${id}`;
     const url = authority ? `${authority}${path}` : `${window.location.protocol}//${window.location.host}${path}`;
 
     return (
