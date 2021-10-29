@@ -1,4 +1,3 @@
-import styles from './InfotainmentContent.module.css';
 import { FunctionComponent } from "react";
 import ImageContent from './ContentTypes/ImageContent/ImageContent';
 import WebContent from './ContentTypes/WebContent/WebContent';
@@ -14,7 +13,7 @@ const InfotainmentContent: FunctionComponent<InfotainmentContentProps> = ({ file
     } else if (filetype === 'text/vnd.url') {
         return <WebContent content={content} />;
     } else {
-        return <div>Uh oh. We do not support this file type!</div>;
+        return <h1>Uh oh. We do not support this file type!</h1>;
     }
 };
 
