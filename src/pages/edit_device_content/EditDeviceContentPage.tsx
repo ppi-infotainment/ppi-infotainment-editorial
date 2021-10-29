@@ -11,7 +11,7 @@ import {
 import { Box } from "@mui/system";
 
 const EditDeviceContentPage: FunctionComponent = () => {
-    const { description } = useParams<any>();
+    const { id, description } = useParams<any>();
     const [items, setItems] = useState([
         "Never gonna give you up",
         "PPI Talks",
@@ -20,22 +20,22 @@ const EditDeviceContentPage: FunctionComponent = () => {
 
     return (
         <div className={styles.edit_device_content_page}>
-             <Box sx={{ flexDirection: 'column', display: 'flex', alignContent: 'center', alignSelf: 'center' }}>
-            <PageHeaderText title={description + " bearbeiten"} />
-            <Box sx={{maxWidth: "400px"}}>
-                <List
-                items={items}
-                onChange={({ oldIndex, newIndex }) =>
-                    setItems(
-                        newIndex === -1
-                            ? arrayRemove(items, oldIndex)
-                            : arrayMove(items, oldIndex, newIndex)
-                    )
-                }
-            />
-            </Box>
-
-            <AddContentButton />
+            <Box sx={{ flexDirection: 'column', display: 'flex', alignContent: 'center', alignSelf: 'center' }}>
+                <PageHeaderText title={description + " bearbeiten"} />
+                <Box sx={{ maxWidth: "400px" }}>
+                    <List
+                        removable
+                        items={items}
+                        onChange={({ oldIndex, newIndex }) =>
+                            setItems(
+                                newIndex === -1
+                                    ? arrayRemove(items, oldIndex)
+                                    : arrayMove(items, oldIndex, newIndex)
+                            )
+                        }
+                    />
+                </Box>
+                <AddContentButton deviceId={id} />
             </Box>
         </div>
 
@@ -43,4 +43,3 @@ const EditDeviceContentPage: FunctionComponent = () => {
 };
 
 export default EditDeviceContentPage;
-

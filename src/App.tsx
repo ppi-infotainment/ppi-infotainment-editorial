@@ -8,6 +8,7 @@ import EditDeviceContentPage from './pages/edit_device_content/EditDeviceContent
 import {Client as Styletron} from 'styletron-engine-atomic';
 import {Provider as StyletronProvider} from 'styletron-react';
 import {LightTheme, BaseProvider} from 'baseui';
+import AddContentPage from './pages/add_content_page/AddContentPage';
 
 
 
@@ -30,6 +31,12 @@ function App() {
             </Route>
             <Route path="/contents">
               <ManageContentsPage />
+            </Route>
+            <Route path="/createContents/:deviceId">
+              <AddContentPage />
+            </Route>
+            <Route exact path="/createContents">
+              <AddContentPage />
             </Route>
             <Route path="/">
               <HomePage />
