@@ -1,5 +1,4 @@
 import { Box } from "@mui/material";
-import * as React from "react";
 import { FunctionComponent } from "react";
 import { useHistory } from "react-router";
 import InfotainmentButton from "../../components/InfotainmentButton/InfotainmentButton";

@@ -1,4 +1,3 @@
-import * as react from "react";
 import { FunctionComponent } from "react";
 import styles from './PageHeaderText.module.css';
 

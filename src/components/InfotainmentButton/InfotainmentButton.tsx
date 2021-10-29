@@ -1,5 +1,4 @@
 import { Button } from "@mui/material";
-import * as react from "react";
 import { FunctionComponent } from "react";
 import styles from './InfotainmentButton.module.css';
 
