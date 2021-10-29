@@ -12,7 +12,7 @@ export type InfotainmentContentProps = {
 const InfotainmentContent: FunctionComponent<InfotainmentContentProps> = ({ filetype, content }) => {
     if (filetype === 'image/png') {
         return <ImageContent content={content} />;
-    } else if (filetype === 'text/vnd.url') {
+    } else if (filetype === 'application/vnd.infotainment.url') {
         return <WebContent content={content} />;
     } else if (filetype === 'application/vnd.infotainment.externalvideo') {
         return <YouTubeContent content={content} />
