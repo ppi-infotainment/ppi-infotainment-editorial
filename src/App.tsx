@@ -1,8 +1,8 @@
 import './App.css';
-import HomePage from './pages/homepage/Homepage';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import ManageContentsPage from './pages/manage_contents/ManageContentsPage';
 import ManageDevicesPage from './pages/manage_devices/ManageDevicesPage';
+import HomePage from './pages/homepage/Homepage';
 import InfotainmentRoot from './pages/infotainment/Root';
 
 function App() {
