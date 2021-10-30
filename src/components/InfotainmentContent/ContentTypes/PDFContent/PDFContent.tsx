@@ -17,10 +17,6 @@ const PDFContent: FunctionComponent<PDFContentProps> = ({ content, delay, onDisp
     const [pageNumber, setPageNumber] = useState(1);
     const [aspectRatio, setAspectRatio] = useState(1920 / 1080);
 
-    function nextPageNumber(pageNumber: number) {
-        return (pageNumber) % (numPages || 1) + 1;
-    }
-
     function onDocumentLoadSuccess({ numPages }: { numPages: number }) {
         setNumPages(numPages);
         setPageNumber(1);
@@ -36,18 +32,16 @@ const PDFContent: FunctionComponent<PDFContentProps> = ({ content, delay, onDisp
     }, [content]);
 
     useEffect(() => {
-        const timer = setInterval(() => {
-            const nextPage = nextPageNumber(pageNumber);
-            if (nextPage === 1) {
+        const timer = setTimeout(() => {
+            if (pageNumber === numPages) {
                 onDisplayCompletion();
             } else {
-                setPageNumber(nextPage);
+                setPageNumber(pageNumber + 1);
             }
         }, delay);
 
-        return () => clearInterval(timer);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [delay, onDisplayCompletion]);
+        return () => clearTimeout(timer);
+    }, [delay, numPages, pageNumber, onDisplayCompletion]);
 
     const containerAspectRatio = width / height;
     const targetAspectRatio = Math.min(containerAspectRatio, aspectRatio);
