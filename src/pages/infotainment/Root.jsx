@@ -1,4 +1,5 @@
 import { useParams } from 'react-router-dom';
+import InfotainmentCarousel from '../../components/InfotainmentCarousel/InfotainmentCarousel';
 import InfotainmentContent from '../../components/InfotainmentContent/InfotainmentContent';
 import InfotainmentQRCode from '../../components/InfotainmentQRCode/InfotainmentQRCode';
 
@@ -14,7 +15,12 @@ function Root() {
 
   return (
     <>
-        <InfotainmentContent filetype="application/pdf" content={mockData.pdf} />
+        <InfotainmentCarousel>
+          <InfotainmentContent filetype="image/png" content={mockData.image} />
+          <InfotainmentContent filetype="application/vnd.infotainment.url" content={mockData.url} />
+          <InfotainmentContent filetype="application/vnd.infotainment.externalvideo" content={mockData.yt} />
+          <InfotainmentContent filetype="application/pdf" content={mockData.pdf} />
+        </InfotainmentCarousel>
         <InfotainmentQRCode id={id} />
     </>
   )

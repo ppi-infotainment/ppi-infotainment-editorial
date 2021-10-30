@@ -7,9 +7,10 @@ import { Box } from '@mui/system';
 export type PDFContentProps = {
     content: string,
     delay: number,
+    onDisplayCompletion: () => void,
 };
 
-const PDFContent: FunctionComponent<PDFContentProps> = ({ content, delay }) => {
+const PDFContent: FunctionComponent<PDFContentProps> = ({ content, delay, onDisplayCompletion }) => {
     const { observe, height, width } = useDimensions();
     const [pdfURL, setPDFURL] = useState(content);
     const [numPages, setNumPages] = useState<number | null>(null);
@@ -36,7 +37,12 @@ const PDFContent: FunctionComponent<PDFContentProps> = ({ content, delay }) => {
 
     useEffect(() => {
         const timer = setInterval(() => {
-            setPageNumber(nextPageNumber(pageNumber));
+            const nextPage = nextPageNumber(pageNumber);
+            if (nextPage === 1) {
+                onDisplayCompletion();
+            } else {
+                setPageNumber(nextPage);
+            }
         }, delay);
 
         return () => clearInterval(timer);
