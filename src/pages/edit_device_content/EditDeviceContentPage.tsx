@@ -37,6 +37,7 @@ const EditDeviceContentPage: FunctionComponent = () => {
         contentsToDelete?.forEach(c => deleteContentItem(c));
 
         setContents(newContens);
+        // eslint-disable-next-line
     }, [listItems]);
 
     const deleteContentItem = (content: Content) => {
