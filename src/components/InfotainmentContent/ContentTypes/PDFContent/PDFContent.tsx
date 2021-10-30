@@ -12,7 +12,6 @@ export type PDFContentProps = {
 
 const PDFContent: FunctionComponent<PDFContentProps> = ({ content, delay, onDisplayCompletion }) => {
     const { observe, height, width } = useDimensions();
-    const [pdfURL, setPDFURL] = useState(content);
     const [numPages, setNumPages] = useState<number | null>(null);
     const [pageNumber, setPageNumber] = useState(1);
     const [aspectRatio, setAspectRatio] = useState(1920 / 1080);
@@ -26,10 +25,6 @@ const PDFContent: FunctionComponent<PDFContentProps> = ({ content, delay, onDisp
         const newAspectRatio = page.width / page.height;
         setAspectRatio(newAspectRatio);
     }
-
-    useEffect(() => {
-        setPDFURL(atob(content));
-    }, [content]);
 
     useEffect(() => {
         const timer = setTimeout(() => {
@@ -53,7 +48,7 @@ const PDFContent: FunctionComponent<PDFContentProps> = ({ content, delay, onDisp
         <div ref={observe} className={styles.infotainment_pdf}>
             <Box sx={{ display: 'flex', justifyContent: 'center' }}>
                 <Document
-                    file={pdfURL}
+                    file={content}
                     onLoadSuccess={onDocumentLoadSuccess}
                 >
                     <Page

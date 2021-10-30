@@ -1,5 +1,5 @@
 import styles from './ImageContent.module.css';
-import { FunctionComponent, useEffect, useState } from "react";
+import { FunctionComponent, useEffect } from "react";
 
 export type ImageContentProps = {
     content: string,
@@ -8,18 +8,12 @@ export type ImageContentProps = {
 };
 
 const ImageContent: FunctionComponent<ImageContentProps> = ({ content, duration, onDisplayCompletion }) => {
-    const [imageDataURI, setDataURI] = useState(content);
-
     useEffect(() => {
         const timeout = setTimeout(onDisplayCompletion, duration);
         return () => clearTimeout(timeout);
     }, [duration, onDisplayCompletion]);
 
-    useEffect(() => {
-        setDataURI(`data:image/png;base64,${content}`);
-    }, [content]);
-
-    return <img src={imageDataURI} alt="infotainment" className={styles.infotainment_image} />;
+    return <img src={content} alt="infotainment" className={styles.infotainment_image} />;
 };
 
 export default ImageContent;

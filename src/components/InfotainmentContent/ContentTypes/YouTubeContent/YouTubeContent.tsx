@@ -1,5 +1,5 @@
 import styles from './YouTubeContent.module.css';
-import { FunctionComponent, useEffect, useState } from "react";
+import { FunctionComponent } from "react";
 import ReactPlayer from 'react-player';
 
 export type YouTubeContentProps = {
@@ -8,16 +8,10 @@ export type YouTubeContentProps = {
 };
 
 const YouTubeContent: FunctionComponent<YouTubeContentProps> = ({ content, onDisplayCompletion }) => {
-    const [videoID, setVideoID] = useState(content);
-
-    useEffect(() => {
-        setVideoID(atob(content));
-    }, [content]);
-
     return <ReactPlayer
         muted
         playing
-        url={videoID}
+        url={content}
         width='100%'
         height='100%'
         className={styles.infotainment_youtube}
