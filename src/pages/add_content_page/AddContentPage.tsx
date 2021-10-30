@@ -30,7 +30,7 @@ const AddContentPage: FunctionComponent = () => {
         if (file) {
             sendFileToBackend(file);
         }
-        histroy.push(`/devices/${deviceId}/${deviceDescription}`);
+        
     };
 
     const sendFileToBackend = (file: InfotainmentFile) => {
@@ -44,6 +44,8 @@ const AddContentPage: FunctionComponent = () => {
             method: 'post',
             url: `${BackendURL}/editorial/${deviceId}`,
             data: dto
+        }).then(() => {
+            histroy.push(`/devices/${deviceId}/${deviceDescription}`);
         });
     };
 
@@ -78,7 +80,9 @@ const AddContentPage: FunctionComponent = () => {
             method: 'post',
             url: `${BackendURL}/editorial/${deviceId}`,
             data: dto
-        });
+        }).then(() => {
+            histroy.push(`/devices/${deviceId}/${deviceDescription}`);
+        });;
     };
 
 
