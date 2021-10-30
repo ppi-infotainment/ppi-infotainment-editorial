@@ -15,11 +15,11 @@ const ContentCard: FunctionComponent<ContentCardProps> = ({ contentElement }) =>
         <Box className={styles.content_card} sx={{ minWidth: 275 }}>
             <Card sx={{ minWidth: 400 }} variant='outlined'>
                 <CardContent>
-                    <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
-                        {contentElement.name}
+                    <Typography sx={{ fontSize: 14, fontWeight: 'bold' }} color="text.secondary" gutterBottom>
+                        {contentElement.filename}
                     </Typography>
                     <Typography sx={{ mb: 0.5, fontWeight: 'bold' }} color="text.secondary">
-                        {contentElement.type}
+                        {contentElement.filetype}
                     </Typography>
                     <Typography sx={{ fontSize: 12 }} color="text.secondary">
                         Content-Typ

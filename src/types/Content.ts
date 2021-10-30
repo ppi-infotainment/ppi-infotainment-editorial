@@ -1,6 +1,6 @@
 type Content = {
-    name: string;
-    type: string
+    filename: string;
+    filetype: string
 };
 
 export default Content;
