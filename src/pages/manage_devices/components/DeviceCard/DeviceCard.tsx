@@ -23,6 +23,9 @@ const DeviceCard: FunctionComponent<DeviceCardProps> = ({ deviceName, deviceId }
                     <Typography sx={{ fontSize: 16, fontWeight: 'bold' }} color="text.secondary" gutterBottom>
                         {deviceName}
                     </Typography>
+                    <Typography sx={{ fontSize: 12, fontWeight: 'bold' }} color="text.secondary" gutterBottom>
+                        ID: {deviceId}
+                    </Typography>
                 </CardContent>
                 <CardActions sx={{ display: "flex", flexDirection: 'row-reverse' }}>
                     <Button 

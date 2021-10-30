@@ -21,9 +21,21 @@ const ManageContents: FunctionComponent = () => {
             });
     }, []);
 
-    const handleDeleteClick = () => {
+    const handleDeleteClick = (contentName: string) => {
+        console.log("trying to delete");
+        const newContents = contents.filter((content) => content.filename !== contentName);
 
+        setContents(newContents);
+        sendDeleteToBackend(contentName);
     };
+
+    const sendDeleteToBackend = (contentName: string) => {
+        axios.delete(`${BackendURL}/editorial/1/${contentName}`)
+        .then((response) => {
+        }, (error) => {
+            console.log(error);
+        });
+    }
 
     return (
         <Box sx={{ display: 'flex', flexDirection: 'column' }} className={styles.manage_contents_page}>
@@ -34,7 +46,7 @@ const ManageContents: FunctionComponent = () => {
                 {contents.map((content) =>
                     <ContentCard
                         contentElement={content}
-                        onDeleteClick={handleDeleteClick}
+                        onDeleteClick={() => handleDeleteClick(content.filename)}
                         key={content.filename + "_" + content.filetype} />)}
                     
             </Box>
