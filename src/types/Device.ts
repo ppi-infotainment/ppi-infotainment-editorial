@@ -1,5 +1,5 @@
 type Device = {
-    id: string;
+    systemId: string;
     description: string
 };
 

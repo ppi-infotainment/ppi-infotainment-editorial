@@ -10,7 +10,7 @@ export type ContentCardProps = {
 };
 
 
-const ContentCard: FunctionComponent<ContentCardProps> = ({ contentElement }) => {
+const ContentCard: FunctionComponent<ContentCardProps> = ({ contentElement, onDeleteClick }) => {
     return (
         <Box className={styles.content_card} sx={{ minWidth: 275 }}>
             <Card sx={{ minWidth: 400 }} variant='outlined'>
@@ -26,8 +26,7 @@ const ContentCard: FunctionComponent<ContentCardProps> = ({ contentElement }) =>
                     </Typography>
                 </CardContent>
                 <CardActions sx={{display: "flex", flexDirection: 'row-reverse'}}>
-                    
-                    <Button size="small">Löschen</Button>
+                    <Button onClick={onDeleteClick} size="small">Löschen</Button>
                 </CardActions>
             </Card>
         </Box>
