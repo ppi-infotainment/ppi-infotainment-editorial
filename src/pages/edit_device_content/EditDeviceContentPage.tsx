@@ -1,5 +1,5 @@
 import { FunctionComponent, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams } from "react-router";
 import PageHeaderText from "../../components/PageHeaderText/PageHeaderText";
 import AddContentButton from "./components/AddContentButton/AddContentButton";
 import styles from './EditDeviceContentPage.module.css';
@@ -35,7 +35,7 @@ const EditDeviceContentPage: FunctionComponent = () => {
                         }
                     />
                 </Box>
-                <AddContentButton deviceId={id} />
+                <AddContentButton deviceId={id} deviceDescription={description} />
             </Box>
         </div>
 

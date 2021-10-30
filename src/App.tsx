@@ -32,7 +32,7 @@ function App() {
             <Route path="/contents">
               <ManageContentsPage />
             </Route>
-            <Route path="/createContents/:deviceId">
+            <Route path="/createContents/:deviceId/:deviceDescription">
               <AddContentPage />
             </Route>
             <Route exact path="/createContents">

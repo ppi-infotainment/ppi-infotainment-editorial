@@ -15,7 +15,6 @@ const ManageDevices: FunctionComponent = () => {
     useEffect(() => {
         axios.get(`${BackendURL}/editorial`)
             .then((response) => {
-                console.log(JSON.stringify(response));
                 const data: Device[] = response.data;
                 setDevices(data);
             }, (error) => {

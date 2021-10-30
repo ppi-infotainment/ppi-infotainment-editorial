@@ -22,7 +22,6 @@ const ManageContents: FunctionComponent = () => {
     }, []);
 
     const handleDeleteClick = (contentName: string) => {
-        console.log("trying to delete");
         const newContents = contents.filter((content) => content.filename !== contentName);
 
         setContents(newContents);
