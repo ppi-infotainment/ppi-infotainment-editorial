@@ -27,7 +27,7 @@ const ManageDevices: FunctionComponent = () => {
             <Box sx={{ flexDirection: 'column', display: 'flex', alignContent: 'center', alignSelf: 'center' }}>
                 <PageHeaderText title="Geräte verwalten" />
             </Box>
-            <Box sx={{ flexDirection: 'column', display: 'flex', alignContent: 'center', alignSelf: 'center' }}>
+            <Box sx={{ flexDirection: 'column', display: 'flex', alignContent: 'center', alignSelf: 'center', margin: "8px" }}>
                 {devices.map((device) =>
                     <DeviceCard
                         deviceId={device.systemId}

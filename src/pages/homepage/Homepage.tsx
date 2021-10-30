@@ -18,7 +18,7 @@ const HomePage: FunctionComponent = () => {
 
     return (
         <div className={styles.homepage}>
-            <Box sx={{ display: 'inline-flex', flexDirection: 'column' }}>
+            <Box sx={{ display: 'inline-flex', flexDirection: 'column', margin: "8px" }}>
                 <PageHeaderText title="PPI Infotainment System" />
                 <InfotainmentButton text="Content verwalten" onClick={onManageContentClicked} />
                 <InfotainmentButton text="Devices vewalten" onClick={onManageDevicesClicked} />
