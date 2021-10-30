@@ -7,6 +7,7 @@ import PageHeaderText from "../../components/PageHeaderText/PageHeaderText";
 import { BackendURL } from "../../global/BackendRL/backendUrl";
 import styles from './AddContentPage.module.css';
 import Dropzone from "./DropZone/DropZone";
+import FileCard from "./FileCard/FileCard";
 import AddContentDto from "./types/AddContentDto";
 import InfotainmentFile from "./types/InfotainmentFile";
 
@@ -30,7 +31,7 @@ const AddContentPage: FunctionComponent = () => {
         if (file) {
             sendFileToBackend(file);
         }
-        
+
     };
 
     const sendFileToBackend = (file: InfotainmentFile) => {
@@ -75,7 +76,7 @@ const AddContentPage: FunctionComponent = () => {
                 'application/vnd.infotainment.externalvideo' : 'application/vnd.infotainment.url'
         };
 
-        
+
         axios({
             method: 'post',
             url: `${BackendURL}/editorial/${deviceId}`,
@@ -86,27 +87,51 @@ const AddContentPage: FunctionComponent = () => {
     };
 
 
+    const onFileDelete = () => {
+        setFile(undefined);
+    };
+
 
     return (
         <Box className={styles.add_content_page}>
             <Box sx={{ flexDirection: 'column', display: 'flex', alignContent: 'center', alignSelf: 'center' }}>
                 <PageHeaderText title="Content zu Geräten hinzufügen" />
             </Box>
-            <Box className={styles.dropzone} sx={{ flexDirection: 'column', display: 'flex', alignContent: 'center', alignSelf: 'center' }}>
-                <Dropzone onFileUploaded={onFileSelected} />
-            </Box>
-            <Box sx={{ flexDirection: 'column', display: 'flex', alignContent: 'center', alignSelf: 'center' }}>
-                <p className={styles.or_text}>oder fügen Sie einen Links ein!</p>
-            </Box>
-            <Box sx={{ flexDirection: 'column', display: 'flex', alignContent: 'center', alignSelf: 'center' }}>
-                <TextField placeholder="Enter a name for your content" label="Content Name" value={linkName} onChange={handleLinkeNameChanged}></TextField>
-            </Box>
-            <Box sx={{ flexDirection: 'column', display: 'flex', alignContent: 'center', alignSelf: 'center' }}>
-                <TextField placeholder="Enter your url" label="Url" value={urlValue} onChange={handleURLInputFieldChanged}></TextField>
-            </Box>
-            <Box className={styles.save_button} sx={{ flexDirection: 'column', display: 'flex', alignContent: 'center', alignSelf: 'center' }}>
-                <Button variant='outlined' onClick={handleOnSave}>Speichern</Button>
-            </Box>
+            {
+                file === undefined ?
+                    <Box className={styles.dropzone} sx={{ flexDirection: 'column', display: 'flex', alignContent: 'center', alignSelf: 'center' }}>
+                        <Dropzone onFileUploaded={onFileSelected} />
+                    </Box> : <></>
+            }
+            {
+                file === undefined ?
+                    <>
+                        <Box sx={{ flexDirection: 'column', display: 'flex', alignContent: 'center', alignSelf: 'center' }}>
+                            <p className={styles.or_text}>oder fügen Sie einen Links ein!</p>
+                        </Box>
+                        <Box sx={{ flexDirection: 'column', display: 'flex', alignContent: 'center', alignSelf: 'center' }}>
+                            <TextField placeholder="Enter a name for your content" label="Content Name" value={linkName} onChange={handleLinkeNameChanged}></TextField>
+                        </Box>
+                        <Box sx={{ flexDirection: 'column', display: 'flex', alignContent: 'center', alignSelf: 'center' }}>
+                            <TextField placeholder="Enter your url" label="Url" value={urlValue} onChange={handleURLInputFieldChanged}></TextField>
+                        </Box>
+                        <Box className={styles.save_button} sx={{ flexDirection: 'column', display: 'flex', alignContent: 'center', alignSelf: 'center' }}>
+                            <Button variant='outlined' onClick={handleOnSave}>Speichern</Button>
+                        </Box>
+                    </> : <></>
+            }
+            {
+                file !== undefined ?
+                    <>
+                        <Box sx={{ flexDirection: 'column', display: 'flex', alignContent: 'center', alignSelf: 'center' }}>
+                            <FileCard fileName={file.filename} onDeleteClick={onFileDelete} />
+                        </Box>
+                        <Box className={styles.save_button} sx={{ flexDirection: 'column', display: 'flex', alignContent: 'center', alignSelf: 'center' }}>
+                            <Button variant='outlined' onClick={handleOnSave}>Hochladen</Button>
+                        </Box>
+                    </> : <></>
+            }
+
         </Box>
     );
 };
