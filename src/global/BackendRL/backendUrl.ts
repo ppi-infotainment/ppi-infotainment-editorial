@@ -1,0 +1,1 @@
+export const BackendURL = "https://us-central1-ppi-infotainment.cloudfunctions.net/v1";

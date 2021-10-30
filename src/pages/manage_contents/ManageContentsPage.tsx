@@ -1,29 +1,25 @@
 import { Box } from "@mui/system";
-import { FunctionComponent } from "react";
+import axios from "axios";
+import { FunctionComponent, useEffect, useState } from "react";
 import PageHeaderText from "../../components/PageHeaderText/PageHeaderText";
+import { BackendURL } from "../../global/BackendRL/backendUrl";
 import Content from "../../types/Content";
 import ContentCard from "./components/ContentCard/ContentCard";
 import styles from './ManageContentsPage.module.css';
 
 const ManageContents: FunctionComponent = () => {
-    const mockedData: Content[] = [
-        {
-            name: "Jahrespräsentation",
-            type: "Slides"
-        },
-        {
-            name: "bbi Agenda",
-            type: "Slides"
-        },
-        {
-            name: "Upcoming Events",
-            type: "Image"
-        },
-        {
-            name: "Introducing: Pong.",
-            type: "Game"
-        },
-    ];
+    const [contents, setContents] = useState<Content[]>([]);
+
+    useEffect(() => {
+        axios.get(`${BackendURL}/contents`)
+            .then((response) => {
+                console.log(JSON.stringify(response));
+                const data: Content[] = response.data;
+                setContents(data);
+            }, (error) => {
+                console.log(error);
+            });
+    }, []);
 
     const handleDeleteClick = () => {
 
@@ -35,11 +31,12 @@ const ManageContents: FunctionComponent = () => {
                 <PageHeaderText title="Content verwalten" />
             </Box>
             <Box sx={{ flexDirection: 'column', display: 'flex', alignContent: 'center', alignSelf: 'center' }}>
-                {mockedData.map((content) =>
+                {contents.map((content) =>
                     <ContentCard
                         contentElement={content}
                         onDeleteClick={handleDeleteClick}
-                        key={content.name + "_" + content.type} />)}
+                        key={content.filename + "_" + content.filetype} />)}
+                    
             </Box>
         </Box>
 
