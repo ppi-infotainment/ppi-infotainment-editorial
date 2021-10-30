@@ -4,13 +4,14 @@ import { useHistory } from "react-router";
 
 export type AddContentButtonProps = {
     deviceId: string;
+    deviceDescription: string;
 };
 
-const AddContentButton: FunctionComponent<AddContentButtonProps> = ({ deviceId }) => {
+const AddContentButton: FunctionComponent<AddContentButtonProps> = ({ deviceId, deviceDescription }) => {
     const history = useHistory();
 
     const onAddContentClick = () => {
-        history.push(`/createContents/${deviceId}`);
+        history.push(`/createContents/${deviceId}/${deviceDescription}`);
     };
 
     return (
