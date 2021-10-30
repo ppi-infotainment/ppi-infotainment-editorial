@@ -7,18 +7,15 @@ import { Box } from '@mui/system';
 export type PDFContentProps = {
     content: string,
     delay: number,
+    onDisplayCompletion: () => void,
 };
 
-const PDFContent: FunctionComponent<PDFContentProps> = ({ content, delay }) => {
+const PDFContent: FunctionComponent<PDFContentProps> = ({ content, delay, onDisplayCompletion }) => {
     const { observe, height, width } = useDimensions();
     const [pdfURL, setPDFURL] = useState(content);
     const [numPages, setNumPages] = useState<number | null>(null);
     const [pageNumber, setPageNumber] = useState(1);
     const [aspectRatio, setAspectRatio] = useState(1920 / 1080);
-
-    function nextPageNumber(pageNumber: number) {
-        return (pageNumber) % (numPages || 1) + 1;
-    }
 
     function onDocumentLoadSuccess({ numPages }: { numPages: number }) {
         setNumPages(numPages);
@@ -35,12 +32,16 @@ const PDFContent: FunctionComponent<PDFContentProps> = ({ content, delay }) => {
     }, [content]);
 
     useEffect(() => {
-        const timer = setInterval(() => {
-            setPageNumber(nextPageNumber(pageNumber));
+        const timer = setTimeout(() => {
+            if (pageNumber === numPages) {
+                onDisplayCompletion();
+            } else {
+                setPageNumber(pageNumber + 1);
+            }
         }, delay);
 
-        return () => clearInterval(timer);
-    });
+        return () => clearTimeout(timer);
+    }, [delay, numPages, pageNumber, onDisplayCompletion]);
 
     const containerAspectRatio = width / height;
     const targetAspectRatio = Math.min(containerAspectRatio, aspectRatio);
