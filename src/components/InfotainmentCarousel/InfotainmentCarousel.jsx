@@ -1,4 +1,3 @@
-// import styles from './InfotainmentCarousel.module.css';
 import { Children, useState, cloneElement } from "react";
 
 const InfotainmentCarousel = ({ children }) => {
@@ -22,9 +21,7 @@ const InfotainmentCarousel = ({ children }) => {
 
     const childrenArray = Children.toArray(updateChildrenWithProps);
 
-    return <>
-        {childrenArray[childIndex]}
-    </>;
+    return <>{childrenArray[childIndex]}</>;
 };
 
 export default InfotainmentCarousel;
