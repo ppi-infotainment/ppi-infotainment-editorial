@@ -46,7 +46,8 @@ const PDFContent: FunctionComponent<PDFContentProps> = ({ content, delay, onDisp
         }, delay);
 
         return () => clearInterval(timer);
-    });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [delay, onDisplayCompletion]);
 
     const containerAspectRatio = width / height;
     const targetAspectRatio = Math.min(containerAspectRatio, aspectRatio);

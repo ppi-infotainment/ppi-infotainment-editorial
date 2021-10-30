@@ -13,7 +13,7 @@ const ImageContent: FunctionComponent<ImageContentProps> = ({ content, duration,
     useEffect(() => {
         const timeout = setTimeout(onDisplayCompletion, duration);
         return () => clearTimeout(timeout);
-    });
+    }, [duration, onDisplayCompletion]);
 
     useEffect(() => {
         setDataURI(`data:image/png;base64,${content}`);

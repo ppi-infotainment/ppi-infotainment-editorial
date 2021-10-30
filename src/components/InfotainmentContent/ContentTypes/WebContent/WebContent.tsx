@@ -13,7 +13,7 @@ const WebContent: FunctionComponent<WebContentProps> = ({ content, duration, onD
     useEffect(() => {
         const timeout = setTimeout(onDisplayCompletion, duration);
         return () => clearTimeout(timeout);
-    });
+    }, [duration, onDisplayCompletion]);
 
     useEffect(() => {
         setWebURL(atob(content));
