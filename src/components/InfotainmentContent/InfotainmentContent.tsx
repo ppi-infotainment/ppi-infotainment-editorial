@@ -12,6 +12,7 @@ export type InfotainmentContentProps = {
 };
 
 const InfotainmentContent: FunctionComponent<InfotainmentContentProps> = ({ filetype, content, duration, onDisplayCompletion }) => {
+    console.log("instantiating content", filetype);
     if (filetype === 'image/png') {
         return <ImageContent content={content} duration={duration} onDisplayCompletion={onDisplayCompletion} />;
     } else if (filetype === 'application/vnd.infotainment.url') {
@@ -24,7 +25,5 @@ const InfotainmentContent: FunctionComponent<InfotainmentContentProps> = ({ file
         return <h1>Uh oh. We do not support this file type!</h1>;
     }
 };
-
-InfotainmentContent.defaultProps = { duration: 10000 };
 
 export default InfotainmentContent;

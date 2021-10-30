@@ -1,5 +1,5 @@
 import styles from './WebContent.module.css';
-import { FunctionComponent, useEffect, useState } from "react";
+import { FunctionComponent, useEffect } from "react";
 
 export type WebContentProps = {
     content: string,
@@ -8,19 +8,13 @@ export type WebContentProps = {
 };
 
 const WebContent: FunctionComponent<WebContentProps> = ({ content, duration, onDisplayCompletion }) => {
-    const [webURL, setWebURL] = useState(content);
-
     useEffect(() => {
         const timeout = setTimeout(onDisplayCompletion, duration);
         return () => clearTimeout(timeout);
     }, [duration, onDisplayCompletion]);
 
-    useEffect(() => {
-        setWebURL(atob(content));
-    }, [content]);
-
     return <iframe
-        src={webURL}
+        src={content}
         title="infotainment"
         sandbox="allow-scripts"
         className={styles.infotainment_webcontent}
